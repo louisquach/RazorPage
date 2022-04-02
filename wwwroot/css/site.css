@@ -1,0 +1,26 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.mainImage {
+    margin-top: 3rem;
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px;
+}

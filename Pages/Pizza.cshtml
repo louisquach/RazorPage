@@ -1,0 +1,52 @@
+﻿@page
+@model PizzaRazor.Pages.PizzaModel
+@{
+}
+
+<div>
+    <section>
+        <h1 class="text-capitalize text-center">Our great selection of pizzas</h1>
+        <div style="font-weight: bold; text-align: center">
+            <h5>Choose one, or try out Pizza Builder! Then Order and Done</h5>
+            <h5>No need to give any of your details!</h5>
+            <h5>We already know everything!</h5>
+         </div>
+         <div style="display: flex; width: 100%; justify-content: flex-end">
+             <h6 style="font-style: italic; color: lightgray">Only one pizza per order</h6>
+         </div>
+    </section>
+
+    <div style="display: flex; background-color: darkgrey; margin-top: 5rem; padding: 1rem">
+        <div>
+            <img src="~/images//Pizzas/Create.png" height='200px' width="200px"/>
+        </div>
+        <div style="color: white; padding:2rem 1rem">
+            <h4 style="font-weight: bold">Create your own Pizza</h4>
+            <p>Make your own Pizza with our Pizza Creator</p>
+            <a class="btn btn-primary" asp-page="/Forms/CustomPizza">Try now!</a>
+        </div>
+    </div>
+
+    <div style="color: white; display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 3rem; width: 100%">
+        @{
+            foreach( var item in Model.fakeList)
+            {
+                var imagePath = "/images/Pizzas/" + item.ImageTitle + ".png";
+                <div style="width: 30%; display: flex; justify-content: center; flex-direction: column">
+                    <div style="background-image: url(@imagePath); height: 350px; background-position: center; background-size: contain; background-repeat: no-repeat">
+                    </div>
+                    <a 
+                        asp-page="/Checkout/Checkout" 
+                        class="btn btn-primary mt-2"
+                        asp-route-ImageTitle="@item.ImageTitle"
+                        asp-route-PizzaName="@item.PizzaName"
+                        asp-route-PizzaPrice="@item.FinalPrice"
+                        >
+                        Get This
+                        </a>
+                </div>
+            }
+        }
+        
+    </div>
+</div>

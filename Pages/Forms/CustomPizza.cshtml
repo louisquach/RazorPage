@@ -1,0 +1,30 @@
+﻿@page
+@model PizzaRazor.Pages.Forms.CustomPizzaModel
+@{
+}
+
+
+<div class="text-center container">
+    <h1>Create Your Own Pizza!</h1>
+    <form method="post" style="display: flex; flex-direction: column; align-items: flex-start">
+        <input type="text" asp-for="Pizza.PizzaName" placeholder="Pizza Name"/>
+        <input type="text" asp-for="Pizza.ImageTitle" placeholder="Image Name" style="margin-top: 1rem"/>
+        <div style="display: flex; margin-top: 1rem">
+            <input type="checkbox" asp-for="Pizza.TomatoSauce" placeholder="Tomato sauce?"/>
+            <label style="margin-left: 1rem">Tomato Sauce</label>
+        </div>
+        <div style="display: flex">
+            <input type="checkbox" asp-for="Pizza.Mushroom" placeholder="Mushroom"/>
+            <label style="margin-left: 1rem">Mushroom</label>
+        </div>
+        <div style="display: flex">
+            <input type="checkbox" asp-for="Pizza.Cheese" placeholder="Cheese"/>
+            <label style="margin-left: 1rem">Cheese</label>
+        </div>
+        <div style="display: flex">
+            <input type="checkbox" asp-for="Pizza.Pinapple" placeholder="Pinaple"/>
+            <label style="margin-left: 1rem">Pinapple</label>
+        </div>
+        <button class="btn btn-primary mt-1" type="submit">Create</button>
+    </form>
+</div>
