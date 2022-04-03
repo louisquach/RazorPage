@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PizzaRazor.Context;
+using PizzaRazor.Models;
 
 namespace PizzaRazor.Pages.Checkout
 {
@@ -7,8 +9,13 @@ namespace PizzaRazor.Pages.Checkout
     // bind all props in the class
     public class CheckoutModel : PageModel
     {
+        private ApplicationDbContext _context;
+        public CheckoutModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public string PizzaName { get; set; }
-        public string PizzaPrice { get; set; }
+        public float PizzaPrice { get; set; }
         public string ImageTitle { get; set; }
         public void OnGet()
         {
@@ -19,7 +26,16 @@ namespace PizzaRazor.Pages.Checkout
             if (string.IsNullOrWhiteSpace(ImageTitle))
             {
                 ImageTitle = "Create";
-            }  
+            }
+
+
+            PizzaOrder pizzaOrder = new PizzaOrder();
+            pizzaOrder.PizzaName = PizzaName;
+            pizzaOrder.BasePrice = PizzaPrice;
+
+            _context.PizzaOrders.Add(pizzaOrder);
+            _context.SaveChanges();
+
         }
     }
 }
